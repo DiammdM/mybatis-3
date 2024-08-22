@@ -30,6 +30,7 @@ import org.apache.ibatis.session.RowBounds;
 
 /**
  * This is the default implementation of a MyBatis Cursor. This implementation is not thread safe.
+ * mybatis中的Cursor是一种特殊的查询方式，它可以逐行地从数据库中获取查询结果，而不是一次性将所有结果加载到内存中。这样可以减少内存的占用，特别适用于查询大量数据时。
  *
  * @author Guillaume Darmont / guillaume@dropinocean.com
  */
@@ -51,18 +52,22 @@ public class DefaultCursor<T> implements Cursor<T> {
   private enum CursorStatus {
 
     /**
+     * 新创建的游标，数据库ResultSet还未被消费
      * A freshly created cursor, database ResultSet consuming has not started.
      */
     CREATED,
     /**
+     * 当前正在使用的游标已开始消费数据库ResultSet
      * A cursor currently in use, database ResultSet consuming has started.
      */
     OPEN,
     /**
+     * 游标已被关闭，未完全消费掉
      * A closed cursor, not fully consumed.
      */
     CLOSED,
     /**
+     * 一个完全消费掉的游标，一个消费完的游标总是关闭的。
      * A fully consumed cursor, a consumed cursor is always closed.
      */
     CONSUMED

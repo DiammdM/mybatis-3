@@ -23,6 +23,7 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Eduardo Macarron
+ * 延迟加载等使用
  */
 public interface ProxyFactory {
 

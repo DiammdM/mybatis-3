@@ -80,9 +80,11 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
+      // 代理对象（mapper）一般是接口，如果是对象，则直接调用返回
       if (Object.class.equals(method.getDeclaringClass())) {
         return method.invoke(this, args);
       }
+      // 代理对象（mapper）是接口
       return cachedInvoker(method).invoke(proxy, method, args, sqlSession);
     } catch (Throwable t) {
       throw ExceptionUtil.unwrapThrowable(t);

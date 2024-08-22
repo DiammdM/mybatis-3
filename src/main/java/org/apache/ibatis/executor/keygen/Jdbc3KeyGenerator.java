@@ -46,6 +46,7 @@ import org.apache.ibatis.util.MapUtil;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * 用于处理数据库支持自增主键的情况，如MySQL的auto_increment
  */
 public class Jdbc3KeyGenerator implements KeyGenerator {
 

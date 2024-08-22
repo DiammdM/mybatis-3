@@ -15,5 +15,6 @@
  */
 /**
  * Parses annotions to create a Configuration.
+ * 解析注解方式配置的sql
  */
 package org.apache.ibatis.builder.annotation;

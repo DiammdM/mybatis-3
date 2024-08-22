@@ -22,21 +22,25 @@ import java.io.Closeable;
  * items queries that would not normally fit in memory. If you use collections in resultMaps then cursor SQL queries
  * must be ordered (resultOrdered="true") using the id columns of the resultMap.
  *
+ * mybatis中的Cursor是一种特殊的查询方式，它可以逐行地从数据库中获取查询结果，而不是一次性将所有结果加载到内存中。这样可以减少内存的占用，特别适用于查询大量数据时。
  * @author Guillaume Darmont / guillaume@dropinocean.com
  */
 public interface Cursor<T> extends Closeable, Iterable<T> {
 
   /**
+   * 如果游标已开始从数据库中获取项目，则返回true
    * @return true if the cursor has started to fetch items from database.
    */
   boolean isOpen();
 
   /**
+   * 如果游标已被完全消耗，并且已返回所有与查询匹配的元素，则返回true。
    * @return true if the cursor is fully consumed and has returned all elements matching the query.
    */
   boolean isConsumed();
 
   /**
+   * 获取当前项目索引。第一项的索引为0。
    * Get the current item index. The first item has the index 0.
    *
    * @return -1 if the first cursor item has not been retrieved. The index of the current item retrieved.

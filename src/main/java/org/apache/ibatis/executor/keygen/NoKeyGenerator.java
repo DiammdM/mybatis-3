@@ -23,6 +23,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * 空实现，不需要处理主键。
  */
 public class NoKeyGenerator implements KeyGenerator {
 
